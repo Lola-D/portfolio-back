@@ -12,4 +12,22 @@ router.get('/', (req, res) => {
   })
 })
 
+router.post('/', (req, res) => {
+  const { name, description, githubUrl, projectUrl, preview } = req.body
+  const values = [
+    name,
+    description,
+    githubUrl,
+    projectUrl,
+    preview
+  ]
+  const sql =
+    `INSERT INTO project (name, description, github_url, project_url, preview) 
+      VALUES (?, ?, ?, ?, ?)`
+  connection.query(sql, values, err => {
+    if (err) throw err
+    res.sendStatus(200)
+  })
+})
+
 module.exports = router
