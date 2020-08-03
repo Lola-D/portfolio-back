@@ -14,7 +14,6 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/home', routes.Home)
 app.use('/project', routes.Project)
 
 app.listen(port, () => {
