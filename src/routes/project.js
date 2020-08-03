@@ -12,6 +12,15 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/:id', (req, res) => {
+  const value = [req.params.id]
+  const sql = 'SELECT  * FROM project WHERE id =  ?'
+  connection.query(sql, value, (err, result) => {
+    if (err) throw err
+    res.status(200).send(result)
+  })
+})
+
 router.post('/', (req, res) => {
   const { name, description, githubUrl, projectUrl, preview } = req.body
   const values = [
