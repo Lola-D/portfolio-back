@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
   const sql = 'SELECT  * FROM project WHERE id =  ?'
   connection.query(sql, value, (err, result) => {
     if (err) throw err
-    res.status(200).send(result)
+    res.status(200).send(result[0])
   })
 })
 
