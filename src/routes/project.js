@@ -47,8 +47,17 @@ router.put('/:id', (req, res) => {
     githubUrl,
     projectUrl,
     preview,
-    req.params.id]
-  const sql = 'UPDATE project SET ? WHERE id = ?'
+    req.params.id
+  ]
+  const sql =
+    `UPDATE project 
+      SET 
+        name =  ?,
+        description =  ?,
+        githubUrl =  ?,
+        projectUrl =  ?,
+        preview =  ?
+    WHERE id = ?`
   connection.query(sql, values, err => {
     if (err) throw err
     res.sendStatus(201)
